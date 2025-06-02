@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
 
-function ModalPaciente({ onClose }) {
+function ModalPaciente({ onClose, paciente }) {
     const [formData, setFormData] = useState({
         id: '',
         nome: '',
@@ -22,6 +22,13 @@ function ModalPaciente({ onClose }) {
         telefone: '',
         email: '',
     });
+
+    useEffect(() => {
+        if (paciente) {
+            setFormData(paciente);
+        }
+    }, [paciente]);
+
 
     const [status, setStatus] = useState(null);
 
@@ -108,39 +115,28 @@ function ModalPaciente({ onClose }) {
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3000/pacientes', formData);
-            if (response.status >= 200 && response.status < 300) {
-                alert('Paciente cadastrado com sucesso!');
-                setFormData({
-                    id: '',
-                    nome: '',
-                    dataNascimento: '',
-                    sexo: '',
-                    cpf: '',
-                    endereco: {
-                        rua: '',
-                        numero: '',
-                        bairro: '',
-                        cidade: '',
-                        estado: '',
-                        cep: '',
-                    },
-                    telefone: '',
-                    email: '',
-                });
+            if (paciente) {
+                const response = await axios.put(`http://localhost:3000/pacientes/${paciente._id}`, formData);
+                if (response.status >= 200 && response.status < 300) {
+                    alert('Paciente atualizado com sucesso!');
+                    onClose();
+                } else {
+                    alert('Erro ao atualizar paciente: ' + response.statusText);
+                }
             } else {
-                alert('Erro ao cadastrar paciente: ' + response.statusText);
+                const response = await axios.post('http://localhost:3000/pacientes', formData);
+                if (response.status >= 200 && response.status < 300) {
+                    alert('Paciente cadastrado com sucesso!');
+                    onClose();
+                } else {
+                    alert('Erro ao cadastrar paciente: ' + response.statusText);
+                }
             }
         } catch (error) {
-            if (error.response) {
-                alert('Erro ao cadastrar paciente: ' + (error.response.data.message || error.response.statusText));
-            } else if (error.request) {
-                alert('Erro de rede: sem resposta do servidor.');
-            } else {
-                alert('Erro: ' + error.message);
-            }
+            alert('Erro ao salvar paciente: ' + (error.response?.data?.message || error.message));
         }
     }
+
 
     const anos = Array.from({ length: 100 }, (_, i) => `${new Date().getFullYear() - i}`);
     const meses = Array.from({ length: 12 }, (_, i) => `${i + 1}`.padStart(2, '0'));

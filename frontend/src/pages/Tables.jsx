@@ -1,7 +1,8 @@
 import React from 'react';
 import './Dashboard.css';
 
-export function PacientesTable({ pacientes, excluirPaciente }) {
+export function PacientesTable({ pacientes, excluirPaciente, editarPaciente }) {
+
   return (
     <div className="section" style={{ marginTop: '40px' }}>
       <h2>Pacientes</h2>
@@ -27,7 +28,11 @@ export function PacientesTable({ pacientes, excluirPaciente }) {
               <td>{new Date(p.dataNascimento).toLocaleDateString()}</td>
               <td>{p.telefone}</td>
               <td>
-                <button className="delete-btn" onClick={() => excluirPaciente(p._id)} title="Excluir paciente">
+                <button onClick={() => editarPaciente(p)} className="delete-btn" title="Editar paciente">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="edit-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1.003 1.003 0 0 0 0-1.42l-2.34-2.34a1.003 1.003 0 0 0-1.42 0L14.13 4.67l3.75 3.75 2.83-2.83z" />
+                  </svg>
+                </button>                <button className="delete-btn" onClick={() => excluirPaciente(p._id)} title="Excluir paciente">
                   <svg xmlns="http://www.w3.org/2000/svg" className="delete-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
                     <path d="M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
                   </svg>
