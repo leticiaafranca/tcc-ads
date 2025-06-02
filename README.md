@@ -51,3 +51,5 @@ npm start
 Caso dê conflito de portas, digite Y ou y para seguir. 
 
 E é isso. Qualquer problema com o projeto, basta me contatar :)
+
+Projeto desenvolvido por: Letícia Albuquerque de França - 2326941
