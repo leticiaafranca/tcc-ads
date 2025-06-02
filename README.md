@@ -1,2 +1,55 @@
 # tcc-ads
-Projeto aplicado de Análise e Desenvolvimento de Sistemas
+### Introdução ao PrisMED
+
+Este projeto é uma aplicação web fullstack que permite registro e autenticação de usuários, além de funcionalidades relacionadas ao domínio da aplicação (exemplo: gerenciamento de pacientes, consultas, dashboard de visualização, etc.). O sistema busca oferecer uma gestão eficiente e intuitiva da rotina médica, permitindo o controle centralizado de horários, pacientes e profissionais da saúde. O escopo deste README abrange o planejamento e a implementação do sistema, destacando os requisitos funcionais, as tecnologias a serem utilizadas e os objetivos específicos do projeto.
+
+O público-alvo deste projeto é composto por dois grupos fundamentais: as equipes médicas e os pacientes. O sistema foi desenvolvido para atender às demandas específicas das equipes médicas, oferecendo uma plataforma intuitiva que possibilita o acesso rápido e organizado às agendas clínicas. Além disso, a ferramenta incorpora recursos visuais, como gráficos e tabelas, que facilitam a análise e o acompanhamento das consultas em aberto, otimizando o fluxo de trabalho na clínica. Para os pacientes, o sistema representa um avanço na experiência de atendimento, eliminando a necessidade de longas esperas em filas e garantindo um acesso mais eficiente aos serviços médicos, promovendo, assim, maior conforto e satisfação.
+
+A arquitetura adotada neste projeto segue uma organização de separar o código em três principais camadas: components, utils e pages. Os components são responsáveis por abrigar os elementos reutilizáveis da interface, facilitando a manutenção e o reaproveitamento do código. A pasta utils concentra funções auxiliares e utilitários que suportam a lógica da aplicação. Já as pages representam as telas e rotas principais da aplicação, orquestrando os componentes e definindo a estrutura da navegação.
+
+O projeto utiliza as seguintes tecnologias:
+
+No backend, foi usado Node.js como ambiente de execução JavaScript, combinado com o framework Express para criar uma API REST que gerencia as requisições e respostas do sistema. Para o banco de dados, usou-se o MongoDB, um banco NoSQL que permite armazenar os dados de forma flexível. O acesso e manipulação dos dados no banco são feitos através do Mongoose, uma biblioteca que facilita a modelagem dos dados e a criação de esquemas.
+
+No frontend, a interface do usuário foi construída com React.js. A navegação entre as diferentes telas da aplicação é controlada pelo React Router, que permite gerenciar rotas de forma simples e eficiente.
+
+Para autenticação, o sistema usa JWT (JSON Web Token), que permite validar usuários de forma segura e sem necessidade de manter sessões no servidor. Além disso, as senhas dos usuários são armazenadas com criptografia, utilizando a biblioteca bcrypt, que protege os dados sensíveis contra acessos não autorizados.
+
+### Instruções para rodar o projeto:
+
+1. Backend
+Para rodar o projeto localmente, primeiro clone o repositório. 
+```bash 
+git clone https://github.com/leticiaafranca/tcc-ads.git
+```
+Logo em seguida, entre na pasta do projeto por meio de linha de comando ou navegando normalmente. O projeto contém duas pastas, chamadas frontend e backend. Entre na pasta do backend e execute o seguinte comando:
+
+```bash
+npm install
+```
+O arquivo .env não está incluso no repositório por motivos de segurança e boas práticas. Enviei o arquivo por meio da plataforma do AVA. Arraste o arquivo para a pasta raiz do projeto, no mesmo nível que a pasta src, server.js, etc. Feito isso, inicie o servidor:
+
+```bash
+npm start
+```
+A API estará rodando na porta 3000. O Cluster do MongoDB está setado para permitir a conexão de qualquer IP.
+
+2. Frontend
+   
+Para rodar o frontend, acesse a pasta frontend e execute o seguinte comando:
+
+```bash
+npm install
+```
+
+Agora, rode:
+
+```bash
+npm start
+```
+
+Caso dê conflito de portas, digite Y ou y para seguir. 
+
+E é isso. Qualquer problema com o projeto, basta me contatar :)
+
+Projeto desenvolvido por: Letícia Albuquerque de França - 2326941
