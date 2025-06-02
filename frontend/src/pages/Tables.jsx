@@ -92,7 +92,7 @@ export function ConsultasTable({ consultas, excluirConsulta }) {
   );
 }
 
-export function MedicosTable({ medicos, excluirMedico }) {
+export function MedicosTable({ medicos, excluirMedico, editarMedico }) {
   return (
     <div className="section" style={{ marginTop: '40px' }}>
       <h2>Médicos</h2>
@@ -115,6 +115,11 @@ export function MedicosTable({ medicos, excluirMedico }) {
               <td>{m.nome || "Sem nome"}</td>
               <td>{m.especialidade || "Não informada"}</td>
               <td>
+                <button onClick={() => editarMedico(m)} className="delete-btn" title="Editar paciente">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="edit-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1.003 1.003 0 0 0 0-1.42l-2.34-2.34a1.003 1.003 0 0 0-1.42 0L14.13 4.67l3.75 3.75 2.83-2.83z" />
+                  </svg>
+                </button>
                 <button className="delete-btn" onClick={() => excluirMedico(m._id)} title="Excluir médico">
                   <svg xmlns="http://www.w3.org/2000/svg" className="delete-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
                     <path d="M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />

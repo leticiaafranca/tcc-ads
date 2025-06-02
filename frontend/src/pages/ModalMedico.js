@@ -2,13 +2,20 @@ import React, { useEffect, useState } from 'react';
 import './Modal.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import axios from 'axios';
 
-function ModalMedico({ onClose }) {
+function ModalMedico({ onClose, medico }) {
   const [formData, setFormData] = useState({
     nome: '',
     crm: '',
     especialidade: '',
   });
+
+  useEffect(() => {
+    if (medico) {
+      setFormData(medico);
+    }
+  }, [medico]);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -19,22 +26,22 @@ function ModalMedico({ onClose }) {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/medicos', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        alert('Médico registrado com sucesso!');
-        setFormData({
-          nome: '',
-          crm: '',
-          especialidade: '',
-        });
+      if (medico) {
+        const response = await axios.put(`http://localhost:3000/medicos/${medico._id}`, formData);
+        if (response.status >= 200 && response.status < 300) {
+          alert('Médico atualizado com sucesso!');
+          onClose();
+        } else {
+          alert('Erro ao atualizar médico: ' + response.statusText);
+        }
       } else {
-        const errorData = await response.json();
-        alert('Erro ao registrar médico: ' + (errorData.message || response.status));
+        const response = await axios.post('http://localhost:3000/medicos', formData);
+        if (response.status >= 200 && response.status < 300) {
+          alert('Médico cadastrado com sucesso!');
+          onClose();
+        } else {
+          alert('Erro ao cadastrar médico: ' + response.statusText);
+        }
       }
     } catch (error) {
       alert('Erro de rede: ' + error.message);

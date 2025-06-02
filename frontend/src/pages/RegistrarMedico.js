@@ -21,6 +21,12 @@ function RegistrarMedico() {
   const [medicos, setMedicos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [medicoSelecionado, setMedicoSelecionado] = useState(null);
+
+  function handleEditarMedico(medico) {
+    setMedicoSelecionado(medico);
+    setShowModal(true);
+  }
 
   async function excluirPaciente(id) {
     try {
@@ -95,8 +101,19 @@ function RegistrarMedico() {
           <h2>Painel de médicos</h2>
           <button onClick={() => setShowModal(true)}>+ Novo Médico</button>
         </div>
-        {showModal && <ModalMedico onClose={() => setShowModal(false)} />}
-        <MedicosTable medicos={medicos} excluirMedico={excluirMedico} />
+        {showModal && (
+          <ModalMedico
+            onClose={() => {
+              setShowModal(false);
+              setMedicoSelecionado(null);
+            }}
+            medico={medicoSelecionado}
+          />
+        )}        <MedicosTable
+          medicos={medicos}
+          excluirMedico={excluirMedico}
+          editarMedico={handleEditarMedico}
+        />
 
       </div>
 
