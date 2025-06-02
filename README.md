@@ -27,7 +27,29 @@ Logo em seguida, entre na pasta do projeto por meio de linha de comando ou naveg
 ```bash
 npm install
 ```
-O arquivo .env não está incluso no repositório por motivos de segurança e boas práticas. Enviei o arquivo por meio da plataforma do AVA. Arraste o arquivo para a pasta raiz do projeto, no mesmo nível que a pasta src, server.js, etc. Feito isso, inicie o servidor:
+O arquivo .env não está incluído no repositório por motivos de segurança e boas práticas. Enviei o conteúdo do arquivo por meio da plataforma do AVA, no arquivo onde estava o link para o repo. Para criar o arquivo manualmente, siga os passos abaixo:
+
+Acesse a pasta raiz do projeto (onde estão localizados src/, server.js, etc.) e execute:
+
+```bash
+touch .env
+```
+Você pode abrir o arquivo .env como preferir. Caso prefira fazer por linha de comando, execute o comando abaixo para criar e editar o arquivo .env com o editor nano:
+
+```bash
+nano .env
+```
+Com o editor aberto, cole o conteúdo enviado pela plataforma do AVA. Após colar o conteúdo, pressione:
+
+- Ctrl + O para salvar (novamente: na RAIZ DO PROJETO BACKEND),
+
+- Enter para confirmar,
+
+- Ctrl + X para sair do editor.
+
+O arquivo .env é oculto, então por padrão ele não irá "aparecer" na pasta. Mas confie: ele está lá, se tudo tiver dado certo. Para confirmar, você pode exibir os itens ocultos do Windows ou clicar em Command + Shift + . se tiver no MacOS.
+
+Feito isso, inicie o servidor:
 
 ```bash
 npm start
