@@ -15,6 +15,15 @@ No frontend, a interface do usuário foi construída com React.js. A navegação
 
 Para autenticação, o sistema usa JWT (JSON Web Token), que permite validar usuários de forma segura e sem necessidade de manter sessões no servidor. Além disso, as senhas dos usuários são armazenadas com criptografia, utilizando a biblioteca bcrypt, que protege os dados sensíveis contra acessos não autorizados.
 
+Como forma de validar o conceito do projeto e receber feedback relativo a usabilidade, foi feita uma reunião com o médico de estratégia da família de um posto de saúde de Fortaleza. Nessa reunião, foi possível mostrar o projeto em execução. O gestor da unidade não pode comparecer à reunião.Add commentMore actions
+
+<details>
+  <summary>Ver imagem</summary>
+  
+![IMG_8685](https://github.com/user-attachments/assets/6e59c15b-5b1c-4a9a-86ed-45e6cfcf8566)
+
+</details>
+
 ### Instruções para rodar o projeto:
 
 1. Backend
